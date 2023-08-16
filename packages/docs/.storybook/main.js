@@ -14,6 +14,15 @@ const config = {
     "../src/pages/**/*.stories.mdx",
     "../src/stories/**/*.stories.tsx"
   ],
+
+  viteFinal: (config, { configType }) => {
+    if (configType === 'PRODUCTION') {
+      config.base = '/05-design-systems/'
+    }
+
+    return config
+  },
+
   addons: [
     getAbsolutePath("@storybook/addon-links"),
     getAbsolutePath("@storybook/addon-essentials"),
@@ -28,12 +37,5 @@ const config = {
   docs: {
     autodocs: "tag",
   },
-  viteFinal: (config, { configType }) => {
-    if (configType === 'PRODUCTION') {
-      config.base = '/05-design-systems/'
-    }
-
-    return config
-  }
 };
 export default config;
